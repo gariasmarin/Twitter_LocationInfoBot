@@ -1,12 +1,19 @@
 import tweepy
 import keys
 
+# bearer_token = keys.bearer_token
+# consumer_key = keys.api_key
+# consumer_secret = keys.api_secret
+# access_token = keys.access_token
+# access_token_secret = keys.access_token_secret
+#
+# # OAuth2.0 is weird
+#
+# client = tweepy.Client(bearer_token, api_key, api_secret, access_token, access_token_secret)
 
-
-#OAuth2.0 is weird
 
 def client():
-    client = tweepy.Client(
+    client_ = tweepy.Client(
         bearer_token=keys.bearer_token,
         consumer_key=keys.api_key,
         consumer_secret=keys.api_secret,
@@ -14,11 +21,11 @@ def client():
         access_token_secret=keys.access_token_secret
     )
 
-    return client
+    return client_
 
-def tweet(client: tweepy.Client, message: str):
 
-    client.create_tweet(message)
+def tweet(client_: tweepy.Client, message: str):
+    client_.create_tweet(text=message)
 
     print('Tweeted successfully!')
 
@@ -26,4 +33,4 @@ def tweet(client: tweepy.Client, message: str):
 if __name__ == '__main__':
     client = client()
     tweet(client, 'This was tweeted from Python')
-#include some changes
+# include some changes
